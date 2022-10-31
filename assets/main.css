@@ -14,8 +14,11 @@
 	/*primary colors*/
     --text-primary: #111;
     --bg-primary: #fefefe;
-    --links: #023e8a;
+
+	/*secondary colors*/
+    --links: #023d8ada;
     --light-gray: #aaaaaa;
+	--very-light: #ebebeb;
 
 	/*transitions*/
     --transition-fast: 150ms;
@@ -35,29 +38,57 @@
 	--clr-bluedeep-500: #1daaca;
 }
 
+/*html {scroll-behavior: smooth;}*/
+
 body {
     font-style: normal;
     background-position: center;
     min-height: 100vh;
     color: var(--text-primary);
     background-color: var(--bg-primary);
-	transition: var(--transition-slow) ease;
+	stroke: var(--text-primary);
+	fill: var(--text-primary);
+	z-index: 9999;
 }
 
-.dark {
+body.dark {
 	color: var(--bg-primary);
 	background-color: var(--text-primary);
+	stroke: var(--bg-primary);
+	fill: var(--bg-primary);
+	transition: var(--transition-slow) ease-in-out;
+	z-index: 9;
 }
 
 a {
     text-decoration: none;
-    color: var(--links);
+    color: var(--text-primary);
     font-size: clamp(16px, 1.5vw, 24px);
 }
 
 a:hover {
 	border-bottom: 1px solid var(--light-gray) dotted;
 	color: inherit;
+}
+
+h1 {
+	font-weight: 800;
+}
+
+h2 {
+	font-weight: 600;
+}
+
+h3 {
+	font-weight: 500;
+}
+
+h4 {
+	font-weight: 400;
+}
+
+p {
+	font-weight: 400;
 }
 
 button {
@@ -74,19 +105,37 @@ button:active, button:focus {
 	border: none;
 	background-color: none;
 	background: none;
-	outline: 1.5px solid var(--links);
+	/*outline: 1.5px solid var(--links);*/
 }
+
+/* <filter-function> values */
+/*backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);*/
 
 nav {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	position: fixed;
-	background: var(--bg-primary);
+	background-color: var(--very-light);
+	backdrop-filter: blur(12px);
 	padding: 16px 64px;
 	align-items: center;
 	z-index: 5;
 	border-bottom: 1px solid var(--light-gray);
+}
+
+@media only screen and (min-width: 767px) {
+	nav {
+		position: fixed;
+	}
 }
 
 nav .right {
@@ -102,17 +151,54 @@ nav .hamburber {
 }
 
 nav .right a {
-	color: var(--links);
 	font-size: clamp(19px, 4vw, 23px);
 	font-weight: 500;
 }
+
+/** transition **/
+section.fade-in {
+	-webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: fadein 2s; /* Firefox < 16 */
+	-ms-animation: fadein 2s; /* Internet Explorer */
+	-o-animation: fadein 2s; /* Opera < 12.1 */
+	animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/** end transition **/
 
 nav .right a:hover {
 	font-style: italic;
 }
 
 nav .right a:active, nav .right a.active {
-	color: var(--links);
 	text-decoration: underline;
 	text-decoration-style: dashed;
 	text-underline-offset: 3px;
@@ -144,7 +230,8 @@ li#socials {
 		padding: 16px 32px;
 	}
 	nav.nav-full {
-		height: 100%;
+		min-height: 100vh;
+		position: relative;
 		flex-direction: column;
 		justify-content: center;
 		flex-direction: column;
@@ -166,7 +253,6 @@ li#socials {
 		height: 16px;
 		justify-content: space-between;
 		cursor: pointer;
-        color: var(--text-primary);
 	}
 	nav .hamburger.turned {
 		height: 12px;
@@ -260,6 +346,7 @@ main {
 	display: flex;
 	gap: 8px;
 	justify-content: center;
+	flex-direction: column;
 }
 
 section {
@@ -277,3 +364,151 @@ section {
 	}
 }
 
+/*first window*/
+section.hero-start {
+	min-height: 100vh;
+}
+
+/*aboutme*/
+section.landing {
+	margin-bottom: 100px;
+	padding: 12px 24px;
+}
+
+.container {
+	margin: auto;
+}
+
+.row {
+	display: flex;
+	justify-content: left;
+	align-items: left;
+	flex-direction: row;
+	flex-grow: 1;
+	gap: 20px;
+}
+
+.column {
+	flex-direction: column;
+	flex: 33.33333%;
+	padding: 3rem 1rem;
+	backdrop-filter: blur(12px);
+	text-align: left;
+	outline: 1px solid var(--light-gray);
+	border-radius: 12px;
+	max-height: 300px;
+	max-width: 525px;
+}
+
+.mini-box {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-grow: 1;
+	padding: 1.5rem;
+	margin: auto;
+	text-align: center;
+	flex-direction: column;
+}
+
+.mini-box #span {
+	padding: .25rem;
+	margin: 0;
+}
+
+.mini-box h1 {
+	font-weight: 900;
+	font-size: calc(100% + 22px);
+}
+
+.container h1 {
+	margin: .75rem auto;
+}
+
+.container span {
+	margin: 1rem auto;
+	padding: 1rem 0;
+}
+
+.container p {
+	margin: 1rem auto;
+}
+
+@media screen and (max-width: 732px) {
+	.row {
+		flex-direction: column;
+	}
+}
+
+.hero-start .mini-box {
+	min-height: 300px;
+	max-width: 525px;
+}
+
+.mini-box .button:active {
+	background-color: hsl(214, 97%, 70%);
+	stroke: var(--bg-primary);
+	color: var(--bg-primary);
+	transform: scale(1.01);
+	outline: 2px solid hsl(214, 97%, 70%);
+	transition: .5 all ease;
+}
+
+.mini-box a {
+	max-width: fit-content;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	vertical-align:middle;
+	margin: 1rem auto;
+
+	width: 200px;
+	height: 70px;
+	line-height: 70px;
+	color: #fff;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: 0 5px 10px 3px rgba(0, 0, 0, .1);
+	overflow: hidden;
+	outline: 1px solid var(--light-gray);
+}
+
+.button #splash{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0px;
+	height: 0px;
+	background: rgba(255, 255, 255, .2);
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	transition: .5s ease-out;
+}
+
+/*
+.button svg {
+	margin-top: .575rem;
+	margin-right: 2.25rem;
+	margin-left: 2.25rem;
+	margin-bottom: .475rem;
+}
+*/
+
+
+.mini-box .info-a p {
+	padding: 0 .75rem;
+	font-size: clamp(15px, 4vw, 18px);
+	z-index: 0;
+}
+
+a.info-a {
+	color: var(--text-primary);
+}
