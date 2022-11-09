@@ -13,3 +13,4 @@ function darkMode() {
 		document.querySelector("body").classList.remove("dark");
 	}
 }
+

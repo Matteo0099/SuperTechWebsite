@@ -42,11 +42,44 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
 	transition: var(--transition-slow) ease;
+	margin: 0;
+}
+
+.container {
+	perspective: 50px;  
 }
 
 .dark {
+	--light-gray1: hsl(0, 0%, 87.33%);
 	color: var(--bg-primary);
 	background-color: var(--text-primary);
+	stroke: var(--bg-primary);
+	fill: var(--bg-primary);
+	text-shadow: 0 0 20px var(--light-gray1);
+	border: 1.5px solid var(--bg-primary);
+	outline: 1.5px solid var(--bg-primary);
+}
+
+.dark svg path:not(nav svg path){
+	background-color: var(--text-primary);
+	color: var(--bg-primary);
+	fill: var(--bg-primary);
+	stroke: var(--bg-primary);
+}
+
+.dark a:not(svg) {
+	color: var(--bg-primary);
+}
+
+.dark a svg {
+	color: var(--text-primary);
+	border-radius: 8px;
+}
+
+.dark .card, .dark .card-about {
+	box-shadow: 0px 0px 12px 2px var(--bg-primary);
+	-webkit-box-shadow: 0px 0px 12px 2px var(--bg-primary);
+	-moz-box-shadow: 0px 0px 12px 2px var(--bg-primary);
 }
 
 a {
@@ -57,7 +90,7 @@ a {
 
 a:hover {
 	border-bottom: 1px solid var(--light-gray) dotted;
-	color: inherit;
+	text-decoration: none;
 }
 
 button {
@@ -92,6 +125,8 @@ nav {
 nav .right {
 	display: flex;
 	gap: 32px;
+	justify-content: center;
+	text-align: center;
 	align-items: center;
     list-style: none;
 	max-width: fit-content;
@@ -115,7 +150,7 @@ nav .right a:active, nav .right a.active {
 	color: var(--links);
 	text-decoration: underline;
 	text-decoration-style: dashed;
-	text-underline-offset: 3px;
+	text-underline-offset: 3.5px;
 }
 
 img {
@@ -144,11 +179,13 @@ li#socials {
 		padding: 16px 32px;
 	}
 	nav.nav-full {
-		height: 100%;
+		position: relative;
+		height: 100vh;
+		width: 100%;
+
 		flex-direction: column;
 		justify-content: center;
 		flex-direction: column;
-		z-index: 9999;
 	}
 	nav li#dark-mode button {
 		display: none;
@@ -163,7 +200,7 @@ li#socials {
 		display: flex;
 		flex-direction: column;
 		width: 32px;
-		height: 16px;
+		height: 14px;
 		justify-content: space-between;
 		cursor: pointer;
         color: var(--text-primary);
@@ -181,15 +218,15 @@ li#socials {
 	}
 	nav .right .hamburger .line.turned-one {
 		transform: rotate(45deg);
-		top: 7.5px;
+		top: 8.875px;
 	}
 	nav .right .hamburger .line.turned-two {
 		transform: rotate(-45deg);
 		bottom: 8px;
 	}
 	nav .right .hamburger .line {
-		width: 32px;
-		height: 4px;
+		width: 34px;
+		height: 3px;
 		border-radius: 8px;
 		background: var(--text-primary);
 		position: relative;
@@ -268,6 +305,7 @@ section {
 	align-items: center;
 	padding: 64px;
 	position: relative;
+	min-height: 80vh;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -277,3 +315,208 @@ section {
 	}
 }
 
+main {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+.container {
+	margin: auto;
+	display: flex;  
+	justify-content: center;  
+	align-items: center;  
+	flex-direction: column;
+	padding-top: 10px;  
+	padding-bottom: 10px;  
+}
+
+.container section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 90px;
+	max-width: 1000px;
+}
+
+@media screen and (min-width: 867px) {
+	.container section {
+		width: 800px;
+	}
+	.card {
+		padding: 4rem !important;
+	}
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	transform-style: preserve-3d;  
+	padding: 3rem;
+	max-width: 525px;
+	margin: .5rem;
+	box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.12);
+	-webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.12);
+	-moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.12);
+	border-radius: 6px;
+}
+
+.card > * {
+	transition: var(--transition-slow) ease-in-out;
+}
+
+.flex-box {
+	display: flex;
+}
+
+.card > * {
+	margin: .75rem 0;
+	text-align: left;
+}
+
+.button {
+	margin: .5rem 0;
+	max-width: 140px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	flex-direction: row;
+	padding: 1rem 1.5rem;
+	outline: none;
+	border: none;
+	background: none;
+	border-radius: 6px;
+	color: var(--bg-primary);
+	background-color: var(--text-primary);
+	font-weight: 900;
+}
+
+.btn-hover {
+    max-width: 200px;
+	padding: 1rem 1.75rem;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--bg-primary);
+    cursor: pointer;
+    margin: .3rem auto;
+    height: fit-content;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 12px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover.first {
+	margin-right: .5rem;
+}
+
+.btn-hover:hover {
+    background-position: 100% -10%;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.btn-hover.color-8 {
+    background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+/** ABOUT **/
+.card-about {
+	display: flex;
+	flex-direction: column;
+	transform-style: preserve-3d;
+	transform-origin: top bottom;
+	padding: 3rem;
+	max-width: 525px;
+	margin: .5rem;
+	box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.12);
+	-webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.12);
+	-moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.12);
+	border-radius: 6px;
+}
+
+.card-about > * {
+	margin: .35rem 0;
+}
+/** END ABOUT **/
+
+
+/** PROJECTS **/
+
+/** END PROJECTS **/
+
+
+/** FOOTER **/ 
+footer {
+	max-width: 100%;
+	max-height: 200px;
+	margin: 0 auto;
+}
+
+footer ul {
+	max-width: 100%;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	list-style: none;
+	padding: 0 !important;
+	margin-bottom: 32px;
+	margin-top: auto;
+}
+
+footer ul li {
+	display: flex;
+	flex-direction: row;
+	max-width: fit-content;
+	margin: 0 .5rem;
+}
+
+footer ul li a {
+	font-size: clamp(10px, 2vw, 20px);
+}
+/** resize footer **/
+@media screen and (max-width: 500px) {
+	footer {
+		max-width: fit-content;
+	}
+	footer ul {
+		margin: 0 auto;
+		max-width: 55%;
+	}
+	footer ul li {
+		margin: 0 .1rem;
+	}
+	footer ul li a {
+		font-size: 12px;
+	}
+}
+
+footer a svg:not(.socials svg) {
+	transform: translateY(6px);
+	width: 22px;
+	height: 22px;
+	transition: .35s ease-in-out;
+}
+
+footer a:hover {
+	color: var(--text-primary);
+	text-shadow: 0 0 20px var(--light-gray);
+}
+
+footer ul li a:hover svg {
+	transform: translateY(-2px);
+}
+/** END FOOTER **/
