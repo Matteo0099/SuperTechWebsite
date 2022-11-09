@@ -9,11 +9,14 @@ function nav() {
 function darkMode() {
 	if (document.querySelector("body").className != "dark") {
 		document.querySelector("body").classList.add("dark");
-		document.querySelector("#paragraph").classList.add("dark");
+    document.querySelector("nav").classList.add("dark");
+		//document.querySelector("#paragraph").classList.add("dark");
 	} else {
 		document.querySelector("body").classList.remove("dark");
-		document.querySelector("#paragraph").classList.remove("dark");
+		document.querySelector("nav").classList.remove("dark");
+    //document.querySelector("#paragraph").classList.remove("dark");
 	}
+}
 
 
 /**
